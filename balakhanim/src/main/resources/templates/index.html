@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+    }
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    #user-info {
+      display: flex;
+      align-items: center;
+    }
+    button {
+      margin-left: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    main {
+      display: flex;
+      justify-content: space-around;
+      padding: 20px;
+    }
+
+    section {
+      background-color: #ecf0f1;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 45%;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    section:hover {
+      transform: scale(1.03);
+    }
+
+    h2 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #bdc3c7;
+      padding-bottom: 5px;
+    }
+    .art-piece, .exhibition {
+      cursor: pointer;
+      margin-bottom: 20px;
+      border: 1px solid #bdc3c7;
+      padding: 10px;
+      border-radius: 4px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+
+    .art-piece:hover, .exhibition:hover {
+      transform: scale(1.05);
+    }
+    .art-piece img {
+      width: 100%;
+      border-radius: 4px;
+    }
+    .art-details {
+      padding: 10px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .modal-content {
+      background-color: #ecf0f1;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #bdc3c7;
+      width: 80%;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .close {
+      color: #7f8c8d;
+      float: right;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #34495e;
+    }
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    .biletlər {
+      margin-top: 20px;
+    }
+
+    .biletlər h3 {
+      color: #3498db;
+      margin-bottom: 10px;
+    }
+
+    .biletlər ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .biletlər li {
+      margin-bottom: 20px;
+      border: 1px solid #bdc3c7;
+      padding: 10px;
+      border-radius: 4px;
+    }
+
+    .bilet-novu {
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .bilet-qiymeti {
+      color: #27ae60;
+      margin-right: 10px;
+    }
+
+    .bilet-sayisi {
+      margin-right: 10px;
+    }
+
+    .biletlər button {
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .biletlər button:hover {
+      background-color: #2980b9;
+    }
+    footer{
+      height: 30px;
+    }
+    .ui-button
+    {
+      color: white;
+      text-decoration: none;
+    }
+    .ui-button:hover{
+      text-decoration: underline;
+    }
+  </style>
+  <title>Art Gallery Management System</title>
+</head>
+<body>
+<header>
+  <h1>Art Gallery Management System</h1>
+  <h1 th:text="'Salam ' + ${customer.name}"></h1>
+  <div id="user-info">
+    <a class="ui-button" th:href="@{'/customer/buyticket/' + ${customer.id}}">Bilet Al</a>
+  </div>
+
+  </div>
+</header>
+<main>
+  <section id="Rəsmlər">
+    <h2>Rəsmlər</h2>
+    <div class="art-piece" onclick="showDetails('Vincent van Gogh', 'Four cut Sunflowers', '50.000$', ' Hollandiya','Bu resm adindanda gorunduyu kimi 4 gunebaxanin 4 ferqli bucaqdan cekilmis seklidir.Bu eseri V.Gogh 1887  ciilde yağlı boya ile cekmisdir.V.Goghun eserlerinde tez tez rast gelinen tebietin ve çiçeklerin gözəlliyinin nümunəsidir.Bu əsərdə həmçinin V.Gogh rənglərdən və fırça vurğularıyla  günəbaxanlarin dinamikliyini və enerjisini əldə etməyə çalışmışdır.')">
+      <img src="../static/eser2..jpg" alt="1">
+      <div class="art-details">
+        <p>Ressam: Vincent van Gogh</p>
+        <p>Eser: Four cut Sunflowers</p>
+        <p>Qiymet: 50.000$</p>
+        <p>Ölke: Hollandiya</p>
+        <p>Melumat:Bu resm adindanda gorunduyu kimi 4 gunebaxanin 4 ferqli bucaqdan cekilmis seklidir.Bu eseri V.Gogh 1887  ci
+          ilde yağlı boya ile cekmisdir.V.Gogh'un eserlerinde tez tez rast gelinen tebietin ve çiçeklerin gözəlliyinin nümunəsidir.
+          Bu əsərdə həmçinin V.Gogh rənglərdən və fırça vurğularıyla  günəbaxanlarin dinamikliyini və enerjisini əldə etməyə çalışmışdır.
+          </cite></p>
+      </div>
+    </div>
+    <div class="art-piece" onclick="showDetails('Leondardo da Vinci', 'The Last Supper ', '3.000.000$', 'Italyan','İsa Məsihin çarmıxa çəkilməzdən əvvəl axırıncı dəfə həvariləri ilə yediyi yemək.Bu yeməkdə İsa Məsih Rəbbin Süfrəsi ayinini təsis etmişdir. Bu yeməyə həmçinin sirli və ya gizli şam yeməyi deyirlər, çünki İsa ilə şagirdləri o gecə yəhudilərin ali məclisi olan Sinedriondan gizlənmək məcburiyyətində idilər.Sonuncu şam yeməyi yəhudilərin Pasxa bayramı zamanında baş vermişdir. Şam yeməyi, həm də yevxaristiya Tövratın dini simvolikası ilə sıx bağlıdır. İnsanların bir-birləri və Uca Tanrı ilə birliyin rəmzi olaraq müqəddəs süfrədə iştirak etmə adəti qədimdən olmuşdur. Yəhudilərin arasında da belə adət-ənənə var idi. İsa Məsih bu qədim adət-ənənə əsasında müqəddəs şəriklik süfrəsi yaxud Rəbbin Süfrəsi və ya sonradan xristian kilsəsində yevxasirtiya kimi qəbul olunan müqəddəs mərasimi təsis etmişdir.')">
+      <img src="../static/da%20vinci.jpg" alt="2">
+      <div class="art-details">
+        <p>Ressam:Leondardo da Vinci</p>
+        <p>Eser:The Last Supper  </p>
+        <p>Qiymet:3.000.000$</p>
+        <p>Ölke: Italyan</p>
+        <p>Melumat: İsa Məsihin çarmıxa çəkilməzdən əvvəl axırıncı dəfə həvariləri ilə yediyi yemək.Bu yeməkdə İsa Məsih Rəbbin Süfrəsi ayinini təsis etmişdir. Bu yeməyə həmçinin "sirli" və ya "gizli" şam yeməyi deyirlər, çünki İsa ilə şagirdləri o gecə yəhudilərin ali məclisi olan Sinedriondan gizlənmək məcburiyyətində idilər.Sonuncu şam yeməyi yəhudilərin Pasxa bayramı zamanında baş vermişdir. Şam yeməyi, həm də yevxaristiya Tövratın dini simvolikası ilə sıx bağlıdır. İnsanların bir-birləri və Uca Tanrı ilə birliyin rəmzi olaraq müqəddəs süfrədə iştirak etmə adəti qədimdən olmuşdur. Yəhudilərin arasında da belə adət-ənənə var idi. İsa Məsih bu qədim adət-ənənə əsasında müqəddəs "şəriklik süfrəsi", yaxud Rəbbin Süfrəsi və ya sonradan xristian kilsəsində yevxasirtiya kimi qəbul olunan müqəddəs mərasimi təsis etmişdir.</p>
+
+      </div>
+    </div>
+  </section>
+  <section id="Sərgilər">
+    <h2>Sərgilər</h2>
+    <table>
+    <div class="Sərgilər" onclick="seeExhibits('Dahi * Ressamlar* sergisi ', '01.12.2024-15.12.2024', 'Heyder Eliyev Sarayi', 'Dahi ressamlarin portretleri ile tanış olmağa tələsin.')">
+      <th>Adı:Dahi Ressamlar sergisi</th>
+      <tr>
+      <td>Tarix: 01.12.2024-15.12.2024</td>
+      </tr>
+      <tr>
+      <td>Mekan:Heyder Eliyev Sarayi </td>
+      </tr>
+      <tr>
+      <td>Təsvir: Dahi ressamlarin portretleri ile tanış olmağa tələsin.</td>
+      </tr>
+    </div>
+    </table>
+<!--    <div class="Sergiler" onclick="seeExhibits('Renglerin Harmoniyasi', '10.01.2024-21.01.2024', 'Xalça muzeyi', ' Rənglərin bir-biri ilə olan ahəngi ruhumuzu dinləndirsi')">-->
+<!--      <h3>Adı:Renglerin Harmoniyasi</h3>-->
+<!--      <p>Tarix: 10.01.2024-21.01.2024</p>-->
+<!--      <p>Mekan: Xalça muzeyi</p>-->
+<!--      <p>Təsvir: Rənglərin bir-biri ilə olan ahəngi ruhumuzu dinləndirsin.</p>-->
+<!--    </div>-->
+      <table class="biletlər">
+        <thead>
+        <tr>
+          <th>Bilet Id</th>
+          <th>Bilet Adı</th>
+          <th>Bilet Növü</th>
+          <th>Bilet Tarixi</th>
+          <th>İşlemler</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ticket : ${tickets}">
+          <td th:text="${ticket.id}"></td>
+          <td th:text="${ticket.name}"></td>
+          <td th:text="${ticket.type}"></td>
+          <td th:text="${ticket.date}"></td>
+          <td>
+            <a th:href="@{'/customer/delete-ticket/'+${customer.id}+ '/' + ${ticket.id}}" onclick="return confirm('Bileti silmək istədiyinə əminsən?')">Delete</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+</main>
+</section>
+</main>
+<footer>
+  <p>&copy; 2023 Art Gallery Management System</p>
+</footer>
+</body>
+</html>

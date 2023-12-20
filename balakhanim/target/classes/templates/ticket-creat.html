@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bilet Oluştur</title>
+  <!-- CSS ve diğer head içeriği -->
+  <style>
+    /* Stil tanımlamaları */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    /* ... Diğer stiller ... */
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    section {
+      padding: 20px;
+      text-align: center;
+    }
+    form {
+      display: inline-block;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Art Gallery Management System</h1>
+</header>
+<main>
+  <section id="CreateTicket">
+    <h2>Bilet Oluştur</h2>
+    <form method="post" th:action="@{/bilet/create}">
+      <label for="name">Adı:</label>
+      <input type="text" name="name" id="name" required>
+      <label for="date">Tarih:</label>
+      <input type="text" name="date" id="date" required>
+      <label for="type">Tür:</label>
+      <select name="type" id="type">
+        <option value="normal">Normal</option>
+        <option value="vip">VIP</option>
+      </select>
+      <label for="price">Fiyat:</label>
+      <input type="number" name="price" id="price" required>
+      <label for="location">Konum:</label>
+      <input type="text" name="location" id="location" required>
+      <label for="about">Hakkında:</label>
+      <textarea name="about" id="about" rows="4" required></textarea>
+      <button type="submit">Bilet Oluştur</button>
+    </form>
+  </section>
+</main>
+<footer>
+  <p>&copy; 2023 Art Gallery Management System</p>
+</footer>
+</body>
+</html>

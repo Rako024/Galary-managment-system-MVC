@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bilet Listesi</title>
+
+  <style>
+
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+
+    th {
+      background-color: #3498db;
+      color: white;
+      font-weight: bold;
+      padding: 10px;
+      text-align: left;
+    }
+
+
+    td {
+      border: 1px solid #bdc3c7;
+      padding: 10px;
+    }
+
+
+    a {
+      text-decoration: none;
+      color: #3498db;
+      margin-right: 10px;
+    }
+
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Art Gallery Management System</h1>
+  <a class="button" href="/bilet/add">Ticket Create</a>
+</header>
+<main>
+  <section id="Tickets">
+    <table>
+      <thead>
+      <tr>
+        <th>Adı</th>
+        <th>Türü</th>
+        <th>Fiyatı</th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="ticket : ${tickets}">
+        <td th:text="${ticket.name}"></td>
+        <td th:text="${ticket.type}"></td>
+        <td th:text="${ticket.price}"></td>
+        <td><a th:href="@{'/bilet/edit-ticket/' + ${ticket.id}}">Düzenle</a></td>
+        <td><a th:href="@{'/bilet/delete-ticket/' + ${ticket.id}}">Sil</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+<footer>
+  <p>&copy; 2023 Art Gallery Management System</p>
+</footer>
+</body>
+</html>

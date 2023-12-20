@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buy Ticket</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #ecf0f1;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #bdc3c7;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+  </style>
+</head>
+<body>
+<h2>Bilet Satın Al</h2>
+<p>Merhaba, <span th:text="${customer.name}"></span>!</p>
+
+<form method="post" th:action="@{'/customer/buy/'+${customer.id}}">
+  <label for="selectedTicket">Bilet Seç:</label>
+  <select name="selectedTicket" id="selectedTicket">
+    <option th:each="ticket : ${tickets}" th:value="${ticket.id}" th:unless="${ticket.hasCustomer()}" th:text="${ticket.name + ' - ' + ticket.price}"></option>
+  </select>
+  <br>
+  <button type="submit">Satın Al</button>
+</form>
+</body>
+</html>
